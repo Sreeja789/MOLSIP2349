@@ -1,0 +1,18 @@
+#Summary.txt and Word count.py must be in same folder to run
+def count_words_and_characters(nameoffile):
+  """Counts the words and characters in a text file."""
+
+  with open(nameoffile, 'r') as file:
+    txt = file.read()
+
+  words = txt.split()
+  word_count = len(words)
+
+  char_count = len(txt.replace(" ", ""))  # Exclude spaces
+
+  print(f"Number of words: {word_count}")
+  print(f"Number of characters (excluding spaces): {char_count}")
+
+# Example usage:
+nameoffile = "Summary.txt"  # Replace with your actual file path
+count_words_and_characters(nameoffile)

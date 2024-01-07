@@ -1,0 +1,27 @@
+#run the code in any compiler by giving the right input format
+from datetime import datetime
+
+def calculate_elapsed_time():
+    start_input = input("Enter the start date and time (YYYY-MM-DD HH:MM:SS): ")
+    end_input = input("Enter the end date and time (YYYY-MM-DD HH:MM:SS): ")
+
+    start_datetime = datetime.strptime(start_input, "%Y-%m-%d %H:%M:%S")
+    end_datetime = datetime.strptime(end_input, "%Y-%m-%d %H:%M:%S")
+
+    time_difference = end_datetime - start_datetime
+#days and seconds
+    total_days = time_difference.days
+    total_seconds = time_difference.seconds
+#hours and minutes
+    total_hours = total_seconds // 3600
+    total_minutes = (total_seconds % 3600) // 60
+
+    elapsed_years = total_days // 365
+    elapsed_months = (total_days % 365) // 30
+    remaining_days = total_days % 30
+
+    print("\nElapsed time:")
+    print(f"{elapsed_years} years, {elapsed_months} months, {remaining_days} days, {total_hours} hours, {total_minutes} minutes.")
+
+if __name__ == "__main__":
+    calculate_elapsed_time()

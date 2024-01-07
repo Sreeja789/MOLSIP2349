@@ -1,0 +1,49 @@
+#Better choice if we take any simpler url
+#Their are 2 codes in this file 
+
+import requests
+
+# Choose a suitable quotes API and obtain an API key if required
+API_URL = "https://api.quotable.io/random"  # Example API take any possible one 
+
+def get_quote():
+    """Fetches a random quote from the API."""
+    response = requests.get(API_URL)
+    response.raise_for_status()  # Raise an exception for error responses
+    data = response.json()
+    quote = data["content"]
+    author = data["author"]
+    return quote, author
+
+def display_quote(quote, author):
+    """Displays the quote in a visually appealing format."""
+    print(f"**{quote}**\n— {author}")  # Or use a graphical UI framework for visual display
+
+# Example usage:
+quote, author = get_quote()
+display_quote(quote, author)
+
+
+#option 2 in case if their is any error in url or module name
+
+import urllib.request
+import json
+
+# Choose a suitable quotes API and obtain an API key if required
+API_URL = "https://api.quotable.io/random"  # Example API
+
+def get_quote():
+    """Fetches a random quote from the API."""
+    with urllib.request.urlopen(API_URL) as response:
+        data = json.loads(response.read().decode())
+        quote = data["content"]
+        author = data["author"]
+    return quote, author
+
+def display_quote(quote, author):
+    """Displays the quote in a visually appealing format."""
+    print(f"**{quote}**\n— {author}")  # Or use a graphical UI framework for visual display
+
+# Example usage:
+quote, author = get_quote()
+display_quote(quote, author)

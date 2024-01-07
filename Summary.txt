@@ -1,0 +1,49 @@
+Summary:
+A broadcast message is a message that is sent to all devices on a network or a subnet. 
+A UDP socket is a type of socket that uses the User Datagram Protocol (UDP) to send 
+and receive data. UDP is a connectionless and unreliable protocol, which means that it 
+does not establish a connection before sending data, and it does not guarantee that the 
+data will arrive at the destination. UDP is useful for applications that require speed and 
+efficiency, such as streaming media or online games.
+• It creates a UDP socket using the socket.socket function with 
+socket.AF_INET and socket.SOCK_DGRAM as arguments. socket.AF_INET
+specifies the address family for IPv4 addresses, and socket.SOCK_DGRAM
+specifies the socket type for UDP.
+• It enables broadcasting mode on the socket using the setsockopt method with 
+socket.SOL_SOCKET, socket.SO_BROADCAST, and 1 as arguments. 
+socket.SOL_SOCKET is the level at which the option is defined, 
+socket.SO_BROADCAST is the option name for enabling broadcasting, and 1 is 
+the option value for enabling it.
+• It binds the socket to the specified port using the bind method with a tuple of an 
+empty string and the port number as an argument. The empty string means that 
+the socket will listen on all available interfaces.
+• It tries to receive a broadcast message using the recvfrom method with 1024 as 
+an argument. This method returns a tuple of the data and the address of the 
+sender. The data is a byte object that needs to be decoded into a string using the 
+decode method with ‘utf-8’ as an argument. The address is a tuple of the IP 
+address and the port number of the sender.
+• It prints the received broadcast message and the address of the sender using the 
+print function and an f-string, which is a way of inserting variables into a string.
+• It handles any socket error that may occur during receiving using a try-exceptfinally block. If an error occurs, it prints the error message using the print
+function and an f-string. Finally, it closes the socket using the close method.
+• It creates a UDP socket using the socket.socket function with 
+socket.AF_INET and socket.SOCK_DGRAM as arguments. socket.AF_INET
+specifies the address family for IPv4 addresses, and socket.SOCK_DGRAM
+specifies the socket type for UDP.
+• It enables broadcasting mode on the socket using the setsockopt method with 
+socket.SOL_SOCKET, socket.SO_BROADCAST, and 1 as arguments. 
+socket.SOL_SOCKET is the level at which the option is defined, 
+socket.SO_BROADCAST is the option name for enabling broadcasting, and 1 is 
+the option value for enabling it.
+• It defines the broadcast address as ‘127.0.0.1’, which is the loopback address 
+that refers to the local machine. This means that the broadcast message will 
+only be sent to devices on the same machine as the sender.
+• It tries to send the broadcast message using the sendto method with the 
+message encoded into bytes using the encode method with ‘utf-8’ as an 
+argument, and a tuple of the broadcast address and the port number as another 
+argument. The port number is 12345, which is an arbitrary choice that must 
+match the port number of the receiver.
+• It prints the broadcast message sent using the print function and an f-string, 
+which is a way of inserting variables into a string.
+• It handles any socket error that may occur during sending using a try-exceptfinally block. If an error occurs, it prints the error message using the print
+function and an f-string. Finally, it closes the socket using the close method.
